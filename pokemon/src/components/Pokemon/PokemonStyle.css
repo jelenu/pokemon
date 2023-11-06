@@ -1,0 +1,119 @@
+*{
+  text-decoration: none;
+}
+.pokemon-list {
+    width: 45%;
+    margin: auto;
+    margin-top: 2%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  
+  
+  .pokemon-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pokemon-item:hover {
+    transform: translateY(-2%);
+}
+  .pokemon-name {
+    font-family: "Flexo-Demi",arial,sans-serif;
+    color: #313131;
+    text-transform: none;
+    font-size: 145%;
+    margin-bottom: 5px;
+    
+  }
+  
+  .pokemon-image {
+    max-width: 100%;
+    background-color: #F2F2F2;
+    border-radius: 2%;
+  }
+
+.pokemon-types{
+    display: flex;
+
+}
+
+.pokemon-type{
+
+  font-family: "Flexo-Medium",arial,sans-serif;
+  border-radius: 3px;
+  line-height: 18px;
+  max-width: 110px;
+  margin: 0 2% 0 0;
+  width: 38.4375%;
+  text-transform: none;
+  font-size: 11px;
+  text-align: center;
+  color: white;
+}
+
+.pokemon-body{
+  padding-left: 5%;
+}
+
+.pokemon-id{
+  font-family: "Flexo-Bold",arial,sans-serif;
+  color: #919191;
+  font-size: 80%;
+  padding-top: 2px;
+}
+
+.view-more-button{
+  width: 200px; 
+  height: 50px; 
+  border-radius: 10px;
+  background-color: #1d86ff; 
+  color: #fff; 
+  text-align: center;
+  font-size: 16px; 
+  cursor: pointer;
+  border: none;
+  display: block;
+  margin: 0 auto;
+  margin-top: 5%;
+  margin-bottom: 10%;
+}
+.view-more-button:hover{
+  background-color: #165baa;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.before-button{
+  width: 50%;
+  height: 20vh;
+  background: #919191;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  clip-path: polygon(0 0, 100% 0, 100% 50%, 50% 50%, 35% 100%, 0 100%);
+}
+
+.before-button:hover{
+  background-color: #1d86ff;
+}
+
+.after-button{
+  width: 50%;
+  height: 20vh;
+  background: #919191;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 65% 100%, 50% 50%, 0 50%);
+}
+
+.after-button:hover{
+  background-color: #1d86ff;
+}

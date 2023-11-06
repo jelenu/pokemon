@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { PokemonView } from './PokemonView';
+import './PokemonStyle.css'
 export const PokemonList = () => {
-  const [pokemonList, setPokemonList] = useState([]); // Almacena la lista de Pokémon.
-  const [offset, setOffset] = useState(1); // Controla el índice de inicio de la lista a mostrar.
-  const limit = 12; // Define cuántos Pokémon cargar en cada solicitud.
+  const [pokemonList, setPokemonList] = useState([]);
+  const [offset, setOffset] = useState(1);
+  const limit = 12;
 
   useEffect(() => {
     const fetchPokemonList = async () => {
@@ -12,28 +13,42 @@ export const PokemonList = () => {
       for (let i = offset; i < offset + limit; i++) {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`);
         const data = await response.json();
-        newPokemonList.push(data);
+        const filteredData = {
+          
+          id: data.id,
+          name: data.name,
+          sprite: data.sprites.other["official-artwork"].front_default,
+          types: data.types,
+
+      };
+
+        newPokemonList.push(filteredData);
+        
       }
 
-      setPokemonList((prevList) => [...prevList, ...newPokemonList]);
+      newPokemonList.forEach((pokemon, index) => {
+        setTimeout(() => {
+          setPokemonList((prevList) => [...prevList, pokemon]);
+        }, index * 50);
+      });
     };
 
     fetchPokemonList();
   }, [offset]);
 
   const loadMorePokemon = () => {
-    // Cuando el usuario hace clic en "Ver más", incrementa el valor de offset para cargar el siguiente conjunto de 12 Pokémon.
     setOffset(offset + limit);
   };
 
   return (
     <div>
-      <ul>
+      <div className="pokemon-list">
+
         {pokemonList.map((pokemon) => (
-          <li key={pokemon.id}>{pokemon.name}</li>
+          <PokemonView key={pokemon.id} pokemon={pokemon}/>
         ))}
-      </ul>
-      <button onClick={loadMorePokemon}>Ver más</button>
+      </div>
+      <button onClick={loadMorePokemon} className='view-more-button'>View More</button>
     </div>
   );
 }
